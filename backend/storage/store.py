@@ -1,0 +1,4 @@
+alerts = []
+incidents = []
+responses = []
+events = []
