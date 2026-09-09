@@ -1,20 +1,16 @@
 # BREMR SOC Platform
 
-A security operations center (SOC) simulation and detection engineering
-platform built to demonstrate how security events can be transformed
-into detections, alerts, incidents, and response actions.
+A security operations center (SOC) simulation and detection engineering platform built to demonstrate how security events can be transformed into detections, alerts, incidents, and response actions.
 
-> **Portfolio project --- Cyber Security Officer**
+> **Portfolio project — Cyber Security Officer**
 
 ## Overview
 
-BREMR SOC Platform is a controlled security simulation environment
-designed to demonstrate core SOC workflows without pretending to be a
-production SIEM.
+BREMR SOC Platform is a controlled security simulation environment designed to demonstrate core SOC workflows without pretending to be a production SIEM.
 
 The project focuses on the security operations lifecycle:
 
-``` text
+```text
 Attack Simulation
        ↓
 Security Events
@@ -30,49 +26,72 @@ Incident
 Response / Containment
 ```
 
-The goal is to demonstrate practical understanding of detection
-engineering, alert triage, incident management, MITRE ATT&CK and
-security response.
+The goal is to demonstrate practical understanding of detection engineering, alert triage, incident management, MITRE ATT&CK and security response.
+
+## Screenshots
+
+### SOC Dashboard
+
+![SOC Dashboard](docs/screenshots/dashboard.png)
+
+### Attack Simulator
+
+![Attack Simulator](docs/screenshots/attack-simulator.png)
+
+### Alerts
+
+![Alerts](docs/screenshots/alerts.png)
+
+### Incident Management
+
+![Incident Management](docs/screenshots/incidents.png)
+
+### Detection Rule Details
+
+![Detection Rule Details](docs/screenshots/detection-rule-details.png)
+
+### MITRE ATT&CK
+
+![MITRE ATT&CK](docs/screenshots/mitre-attck.png)
+
+## Architecture
+
+![BREMR SOC Platform Architecture](docs/architecture-overview.png)
+
+The platform follows a clear security operations pipeline:
+
+**Attack Simulation → Security Events → Detection Engine → MITRE ATT&CK → Alert → Incident → Response**
 
 ## Key Features
 
--   SOC dashboard with security metrics
--   Security event stream
--   Alert management
--   Incident management
--   Incident lifecycle:
-    -   OPEN
-    -   INVESTIGATING
-    -   CONTAINED
-    -   RESOLVED
--   Detection rule catalogue
--   MITRE ATT&CK technique mapping
--   Controlled attack simulation
--   Simulated containment response
--   REST API built with FastAPI
--   React-based SOC interface
+- SOC dashboard with security metrics
+- Security event stream
+- Alert management
+- Incident management
+- Incident lifecycle:
+  - OPEN
+  - INVESTIGATING
+  - CONTAINED
+  - RESOLVED
+- Detection rule catalogue
+- MITRE ATT&CK technique mapping
+- Controlled attack simulation
+- Simulated containment response
+- REST API built with FastAPI
+- React-based SOC interface
 
 ## Attack Simulations
 
 The implemented simulations demonstrate:
 
-  -----------------------------------------------------------------------
-  Attack            MITRE ATT&CK      Detection         Status
-  ----------------- ----------------- ----------------- -----------------
-  Brute Force       T1110             Brute Force       Implemented
-  Authentication                      Authentication    
+| Attack | MITRE ATT&CK | Detection | Status |
+|---|---|---|---|
+| Brute Force Authentication | T1110 | Brute Force Authentication | Implemented |
+| Suspicious PowerShell | T1059.001 | Suspicious PowerShell | Implemented |
+| Privilege Escalation | T1068 | Privilege Escalation | Implemented |
+| Lateral Movement | T1021 | Lateral Movement | Implemented |
 
-  Suspicious        T1059.001         Suspicious        Implemented
-  PowerShell                          PowerShell        
-
-  Privilege         T1068             Privilege         Implemented
-  Escalation                          Escalation        
-
-  Lateral Movement  T1021             Lateral Movement  Implemented
-  -----------------------------------------------------------------------
-
-Additional detection rules are represented in the detection-rule
-catalogue and can be expanded independently of the simulator.
+Additional detection rules are represented in the detection-rule catalogue and can be expanded independently of the simulator.
 
 ## Detection Engineering
 
@@ -80,15 +99,15 @@ Detection logic is separated from attack simulation.
 
 This makes it possible to demonstrate the difference between:
 
-1.  generating security telemetry,
-2.  evaluating that telemetry against a detection rule,
-3.  creating an alert,
-4.  escalating the alert into an incident,
-5.  executing a simulated response.
+1. generating security telemetry,
+2. evaluating that telemetry against a detection rule,
+3. creating an alert,
+4. escalating the alert into an incident,
+5. executing a simulated response.
 
 Example:
 
-``` text
+```text
 Remote Service Execution
         ↓
 Detection Rule: T1021
@@ -104,19 +123,19 @@ Containment Response
 
 ### Frontend
 
--   React
--   Vite
--   CSS
+- React
+- Vite
+- CSS
 
 ### Backend
 
--   Python
--   FastAPI
--   Pydantic
+- Python
+- FastAPI
+- Pydantic
 
 ### Architecture
 
-``` text
+```text
 frontend/
     React SOC interface
 
@@ -140,12 +159,11 @@ docs/
 
 ## API
 
-The backend exposes endpoints for health checks, events, alerts,
-incidents and controlled attack simulations.
+The backend exposes endpoints for health checks, events, alerts, incidents and controlled attack simulations.
 
 Examples:
 
-``` text
+```text
 GET  /health
 GET  /events
 GET  /alerts
@@ -164,7 +182,7 @@ PATCH /incidents/{incident_id}/status
 
 ### Backend
 
-``` bash
+```bash
 cd backend
 source venv/bin/activate
 uvicorn main:app --reload --port 8000
@@ -172,13 +190,13 @@ uvicorn main:app --reload --port 8000
 
 Backend:
 
-``` text
+```text
 http://127.0.0.1:8000
 ```
 
 Health check:
 
-``` bash
+```bash
 curl http://127.0.0.1:8000/health
 ```
 
@@ -186,7 +204,7 @@ curl http://127.0.0.1:8000/health
 
 From the project root:
 
-``` bash
+```bash
 cd frontend
 npm run dev
 ```
@@ -227,9 +245,9 @@ The alert is promoted to an incident with status:
 
 A simulated containment action is executed:
 
--   Source IP blocked
--   Compromised account disabled
--   Affected endpoint isolated
+- Source IP blocked
+- Compromised account disabled
+- Affected endpoint isolated
 
 This demonstrates the complete detection-to-response chain.
 
@@ -237,63 +255,43 @@ This demonstrates the complete detection-to-response chain.
 
 This is a **controlled simulation environment**.
 
-The attack simulations generate synthetic security events for
-educational and portfolio purposes. They do not perform real
-exploitation against external systems.
+The attack simulations generate synthetic security events for educational and portfolio purposes. They do not perform real exploitation against external systems.
 
-The response actions are also simulated rather than performing
-destructive actions on a real environment.
+The response actions are also simulated rather than performing destructive actions on a real environment.
 
 ## Project Goals
 
 The project was built to demonstrate practical knowledge in:
 
--   Security Operations Center workflows
--   Detection engineering
--   Security event modelling
--   MITRE ATT&CK
--   Alert triage
--   Incident response
--   Incident lifecycle management
--   Containment concepts
--   REST API development
--   Security-focused frontend development
+- Security Operations Center workflows
+- Detection engineering
+- Security event modelling
+- MITRE ATT&CK
+- Alert triage
+- Incident response
+- Incident lifecycle management
+- Containment concepts
+- REST API development
+- Security-focused frontend development
 
 ## What This Project Is Not
 
 BREMR SOC Platform is intentionally not positioned as:
 
--   a production SIEM,
--   a replacement for Splunk, Microsoft Sentinel or similar platforms,
--   a full EDR,
--   a real malware sandbox,
--   a production incident-response automation platform.
+- a production SIEM,
+- a replacement for Splunk, Microsoft Sentinel or similar platforms,
+- a full EDR,
+- a real malware sandbox,
+- a production incident-response automation platform.
 
-The focus is on demonstrating security operations concepts and
-implementation skills in a controlled environment.
+The focus is on demonstrating security operations concepts and implementation skills in a controlled environment.
 
-## Portfolio Context
+## Portfolio Summary
 
-This project is part of a broader cybersecurity portfolio and
-complements the user's larger security product work.
-
-The SOC Platform demonstrates **operational security and detection
-engineering**, while the broader Northwall project focuses more heavily
-on security architecture, risk, compliance and security-product
-thinking.
+> **BREMR SOC Platform** is a SOC simulation and detection engineering platform demonstrating the complete security operations workflow from controlled attack simulation and security-event generation through MITRE ATT&CK detection, alert creation, incident management and simulated containment response.
 
 ## Author
 
 **Jimmie Brehmer**
 
 Cyber Security Officer student / cybersecurity portfolio project.
-
-------------------------------------------------------------------------
-
-### Portfolio Summary
-
-> **BREMR SOC Platform** is a SOC simulation and detection engineering
-> platform demonstrating the complete security operations workflow from
-> controlled attack simulation and security-event generation through
-> MITRE ATT&CK detection, alert creation, incident management and
-> simulated containment response.
