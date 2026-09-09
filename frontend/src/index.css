@@ -2289,3 +2289,140 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 }
+/* =========================================================
+   BREMR SOC PLATFORM — Dashboard Alert Layout Fix
+   ========================================================= */
+
+.dashboard-grid {
+  grid-template-columns: minmax(0, 1.65fr) minmax(320px, 0.85fr) !important;
+  align-items: start;
+}
+
+.dashboard-grid > .panel {
+  min-width: 0;
+}
+
+.alert-list {
+  width: 100%;
+}
+
+.alert-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+  padding: 18px 22px;
+  box-sizing: border-box;
+}
+
+.alert-main {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.alert-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alert-meta {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alert-row .status-badge {
+  width: max-content !important;
+  min-width: 76px;
+  max-width: none;
+  justify-self: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.alert-row .severity {
+  width: max-content !important;
+  min-width: 70px;
+  justify-self: end;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.alert-row.clickable {
+  cursor: pointer;
+}
+
+.alert-row.clickable:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* Keep the dashboard clean on smaller screens */
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .alert-row {
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+  }
+}
+/* Detection Rule Details - Response Actions fix */
+
+.response-panel {
+  width: 100%;
+}
+
+.response-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px;
+  width: 100%;
+}
+
+.response-action {
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 12px;
+  padding: 20px !important;
+  overflow: hidden;
+}
+
+.response-action strong {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.response-action span {
+  display: block;
+  width: 100%;
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  line-height: 1.4;
+}
+.response-action span {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  display: block !important;
+  width: 100% !important;
+}
